@@ -70,5 +70,22 @@ public class UsuarioDAO {
         return false;
     }
 }
+    
+    public boolean eliminarUsuario(int idUsuario) {
+    String sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+
+    try (Connection con = ConexionBD.obtenerConexion();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setInt(1, idUsuario);
+        int filas = ps.executeUpdate();
+        return filas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
 
 }

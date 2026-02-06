@@ -54,6 +54,13 @@ if (actualizado) {
 } else {
     System.out.println("No se pudo actualizar el usuario");
 }
+boolean eliminado = dao.eliminarUsuario(2); // usa un ID que exista
+
+if (eliminado) {
+    System.out.println("Usuario eliminado correctamente");
+} else {
+    System.out.println("No se pudo eliminar el usuario");
+}
 
 
     }
