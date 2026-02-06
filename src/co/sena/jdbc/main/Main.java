@@ -41,6 +41,20 @@ if (resultado) {
 } else {
     System.out.println("Error al insertar usuario");
 }
+Usuario actualizar = new Usuario();
+actualizar.setIdUsuario(1); // Usa un ID que exista
+actualizar.setNombre("Nombre Actualizado");
+actualizar.setCorreo("actualizado@mail.com");
+actualizar.setRol("Admin");
+
+boolean actualizado = dao.actualizarUsuario(actualizar);
+
+if (actualizado) {
+    System.out.println("Usuario actualizado correctamente");
+} else {
+    System.out.println("No se pudo actualizar el usuario");
+}
+
 
     }
         

@@ -50,5 +50,25 @@ public class UsuarioDAO {
         return false;
     }
 }
+    
+    public boolean actualizarUsuario(Usuario usuario) {
+    String sql = "UPDATE usuarios SET nombre = ?, correo = ?, rol = ? WHERE id_usuario = ?";
+
+    try (Connection con = ConexionBD.obtenerConexion();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setString(1, usuario.getNombre());
+        ps.setString(2, usuario.getCorreo());
+        ps.setString(3, usuario.getRol());
+        ps.setInt(4, usuario.getIdUsuario());
+
+        int filas = ps.executeUpdate();
+        return filas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 
 }
