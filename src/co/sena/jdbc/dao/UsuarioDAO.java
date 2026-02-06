@@ -31,4 +31,24 @@ public class UsuarioDAO {
         }
         return lista;
     }
+      
+    public boolean insertarUsuario(Usuario usuario) {
+    String sql = "INSERT INTO usuarios (nombre, correo, rol) VALUES (?, ?, ?)";
+
+    try (Connection con = ConexionBD.obtenerConexion();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setString(1, usuario.getNombre());
+        ps.setString(2, usuario.getCorreo());
+        ps.setString(3, usuario.getRol());
+
+        ps.executeUpdate();
+        return true;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
 }

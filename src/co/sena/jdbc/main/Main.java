@@ -27,5 +27,22 @@ public class Main {
             System.out.println("Error al listar usuarios");
             e.printStackTrace();
         }
+        
+        Usuario nuevo = new Usuario();
+nuevo.setNombre("Juan");
+nuevo.setCorreo("juan@mail.com");
+nuevo.setRol("Usuario");
+
+UsuarioDAO dao = new UsuarioDAO();
+boolean resultado = dao.insertarUsuario(nuevo);
+
+if (resultado) {
+    System.out.println("Usuario insertado correctamente");
+} else {
+    System.out.println("Error al insertar usuario");
+}
+
     }
+        
+    
 }
